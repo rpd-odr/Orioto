@@ -58,7 +58,7 @@ targets:
     info:
       path: App/Mozz/Info.plist
       properties:
-        CFBundleDisplayName: Mozz
+        CFBundleDisplayName: Orioto
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         UILaunchScreen:
