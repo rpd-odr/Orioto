@@ -1,6 +1,6 @@
-<p align="center"><img src="https://raw.githubusercontent.com/thatcube/brando/main/logos/mozz.svg" alt="Mozz logo" width="128" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/thatcube/brando/main/logos/mozz.svg" alt="Kamioto logo" width="128" /></p>
 
-<h1 align="center">Mozz</h1>
+<h1 align="center">Kamioto</h1>
 
 <p align="center">One app for your music, wherever it lives.<br />
 A free, open-source music player for the Plex, Jellyfin, or Subsonic server you already run.</p>
@@ -12,7 +12,7 @@ A free, open-source music player for the Plex, Jellyfin, or Subsonic server you 
   <a href="https://github.com/sponsors/thatcube"><img alt="Sponsor" src="https://img.shields.io/badge/Sponsor-%E2%9D%A4-ea4aaa.svg" /></a>
 </p>
 
-Mozz is a **self-hosted music player** for the server you already run. Point it at
+Kamioto is a **self-hosted music player** for the server you already run. Point it at
 **Plex**, **Jellyfin**, or a **Subsonic / OpenSubsonic** server (Navidrome is the
 tested target) and your whole library shows up on your **iPhone, iPad, Android
 phone, and desktop** — ready to stream over the network or download and take with
@@ -20,22 +20,24 @@ you.
 
 Streaming and offline both matter here, equally. Some people stream everything and
 never download a thing; others save their library and live underground on the
-subway. Mozz is built for both, and it does not push you toward either.
+subway. Kamioto is built for both, and it does not push you toward either.
 
 **One app for your music, wherever it lives. Free forever. Open source.**
 
 ## Download
+
+> Kamioto is the rebranded continuation of the Mozz codebase. The app identity and customer-facing copy are being updated in this branch; distribution links below are retained temporarily and may still refer to the upstream Mozz release channel until Kamioto builds are published.
 
 **iPhone and iPad:** [Join the public beta on TestFlight](https://testflight.apple.com/join/dmeawSSM).
 Requires **iOS / iPadOS 17 or later**. Install Apple's TestFlight app, open the
 invite link, and tap **Accept**, then **Install**.
 
 Builds for **Android, Windows, macOS and Linux** are on the
-[Releases page](https://github.com/thatcube/Mozz/releases). Per-platform steps —
+[Releases page](https://github.com/rpd-odr/Orioto/releases). Per-platform steps —
 including the first-run warnings on Windows and macOS — are in
 [`docs/INSTALL.md`](docs/INSTALL.md).
 
-You can also build Mozz yourself from source (see
+You can also build Kamioto yourself from source (see
 [`CONTRIBUTING.md`](CONTRIBUTING.md)).
 
 ---
@@ -48,8 +50,8 @@ telemetry watching what you listen to.
 
 ## Platforms
 
-Every Mozz client speaks all three backends and shares one core, so a feature is
-not an iPhone feature or a desktop feature — it's a Mozz feature.
+Every Kamioto client speaks all three backends and shares one core, so a feature is
+not an iPhone feature or a desktop feature — it's a Kamioto feature.
 
 | | iOS / iPadOS | Android | Windows · macOS · Linux |
 |---|---|---|---|
@@ -58,7 +60,7 @@ not an iPhone feature or a desktop feature — it's a Mozz feature.
 | Find servers on your network | ✅ | ✅ | ✅ |
 | Offline downloads | ✅ | ✅ | ✅ |
 | Equalizer, loudness, lyrics | ✅ | ✅ | ✅ |
-| Mixes, radio, Mozz Weekly | ✅ | ✅ | ✅ |
+| Mixes, radio, Kamioto Weekly | ✅ | ✅ | ✅ |
 | In the car | CarPlay | Android Auto | — |
 | Voice assistant & widgets | Siri, HomePod, widgets | — | — |
 
@@ -76,7 +78,7 @@ for each are in [`clients/android/README.md`](clients/android/README.md) and
 - **More than one at a time.** Sign in to several servers and switch between them
   without signing out of anything — your home server and a friend's, side by side,
   each keeping its own catalogue, history, and mixes.
-- **Found, not typed.** Mozz looks for Plex and Jellyfin servers on your network and
+- **Found, not typed.** Kamioto looks for Plex and Jellyfin servers on your network and
   offers them, instead of asking you to copy an address out of a router admin page.
   Plex accounts with several servers get a picker rather than a guess.
 
@@ -87,12 +89,12 @@ validated normally. Plain HTTP does not encrypt credentials or music traffic;
 use a trusted network, a VPN, or HTTPS when connecting over the internet.
 
 **Tailscale works with the same server sign-in.** With Tailscale running on the
-device, use your server's Tailscale IP or MagicDNS name, port, and path. Mozz
+device, use your server's Tailscale IP or MagicDNS name, port, and path. Kamioto
 recognizes likely Tailscale tunnels and shows connection guidance on mobile and
 desktop. This is a local-interface heuristic, not a guarantee that a peer is
 reachable. Saved sign-ins retain their server address for reconnecting.
 LAN discovery cannot list new tailnet servers; enter those addresses once.
-Mozz does not install or manage Tailscale, scan the tailnet, or switch between
+Kamioto does not install or manage Tailscale, scan the tailnet, or switch between
 different LAN and Tailscale addresses automatically.
 
 ### Your library
@@ -107,17 +109,17 @@ different LAN and Tailscale addresses automatically.
 
 #### Jellyfin artwork
 
-Mozz uses Jellyfin's image API for both embedded covers and local image files;
+Kamioto uses Jellyfin's image API for both embedded covers and local image files;
 it does not download songs just to extract their artwork. An item's own cover
 takes priority, followed by an explicitly inherited parent or album cover.
-If an album has no cover of its own, Mozz can use a known cover from one of its
+If an album has no cover of its own, Kamioto can use a known cover from one of its
 tracks. Custom server covers are not replaced.
 
 Existing libraries recover missing covers from artwork already in the local
 catalog. Use **Sync Now** in Settings to fetch newly available image metadata;
 there is no need to sign out, reinstall, or remove downloads.
 
-If artwork works in Jellyfin or another client but not Mozz, include the Mozz
+If artwork works in Jellyfin or another client but not Kamioto, include the Kamioto
 build, Jellyfin version, and whether the affected view is albums, songs, or the
 player in your report. A single affected item's `ImageTags`,
 `ParentPrimaryImageItemId`, `ParentPrimaryImageTag`, `AlbumId`, and
@@ -135,7 +137,7 @@ request failure. Never share passwords, access tokens, or image URLs containing
   level, so you're not reaching for the volume between songs.
 - **A real equalizer.** A 10-band graphic EQ (31 Hz–16 kHz) with presets.
 - **Lyrics.** Time-synced lyrics that highlight and scroll the current line, with a
-  full-screen mode for just the words. Mozz uses your server's lyrics first and falls
+  full-screen mode for just the words. Kamioto uses your server's lyrics first and falls
   back to [LRCLIB](https://lrclib.net) when there are none.
 
 Jellyfin audio requests carry the server's authentication header, including
@@ -156,18 +158,18 @@ song titles, server URLs, and authentication tokens.
 
 ### Discovery & ratings
 
-- **Mozz Weekly.** A weekly mix that rediscovers music already in your library, built
+- **Kamioto Weekly.** A weekly mix that rediscovers music already in your library, built
   right on the device.
 - **Radio and mixes** seeded from what you're listening to.
 - **Likes and stars, unified.** Jellyfin and Subsonic favourites and Plex's star
-  ratings show up together, and Mozz writes them back to your server where it's
+  ratings show up together, and Kamioto writes them back to your server where it's
   supported.
 - **Optional enrichment.** Sharpen radio and mixes with open music databases (only song
   and artist names are sent) — or leave it off and keep recommendations on-device.
 
 ### Across your devices
 
-- **Continue here.** Leave off on one device and Mozz can offer to pick playback up
+- **Continue here.** Leave off on one device and Kamioto can offer to pick playback up
   where you left it on another — resumed only when you choose, never yanked away.
 - **Deep links.** `mozz://` links open straight to an album, artist, playlist, genre,
   or tab, and Apple devices can hand a screen off between themselves.
@@ -204,9 +206,9 @@ Glass player finish on newer iOS.
 
 ## Getting started
 
-1. [Install Mozz](docs/INSTALL.md) for your platform — TestFlight for iPhone and
+1. [Install Kamioto](docs/INSTALL.md) for your platform — TestFlight for iPhone and
    iPad, or the Releases page for Android and desktop.
-2. Choose your server type: Plex, Jellyfin, or Subsonic. Mozz offers any it finds on
+2. Choose your server type: Plex, Jellyfin, or Subsonic. Kamioto offers any it finds on
    your network.
 3. Sign in the way that server expects and pick the libraries you want.
 4. Wait for your library to appear, then start streaming — or download some albums for
@@ -214,7 +216,7 @@ Glass player finish on newer iOS.
 
 ## Privacy
 
-Mozz has no backend of its own and collects nothing about you — no account, no
+Kamioto has no backend of its own and collects nothing about you — no account, no
 analytics, no tracking. It talks to **your** media server, to Plex's sign-in and
 discovery service when you use Plex, and — only when you turn those features on — to
 LRCLIB for lyrics and open music databases for recommendations, sending only the
@@ -223,13 +225,13 @@ minimum needed (song and artist names). Full details are in
 
 ## Reporting bugs & requesting features
 
-Please open an issue on [GitHub Issues](https://github.com/thatcube/Mozz/issues).
+Please open an issue on [GitHub Issues](https://github.com/rpd-odr/Orioto/issues).
 Clear steps to reproduce, your server type, your platform, and what you expected all
 help.
 
 ## Contributing & development
 
-Mozz is open source and contributions are welcome. Build instructions, the code
+Kamioto is open source and contributions are welcome. Build instructions, the code
 layout and testing live in [`CONTRIBUTING.md`](CONTRIBUTING.md), and cutting a
 release is [`docs/RELEASING.md`](docs/RELEASING.md); the deeper design rationale is in
 [`ARCHITECTURE.md`](ARCHITECTURE.md) and the notes and decision records under
@@ -237,19 +239,19 @@ release is [`docs/RELEASING.md`](docs/RELEASING.md); the deeper design rationale
 
 ## Donate
 
-Mozz is **free forever**. If it's earned a place on your Home Screen and you'd like to
+Kamioto is **free forever**. If it's earned a place on your Home Screen and you'd like to
 chip in, you can sponsor development through
 [GitHub Sponsors](https://github.com/sponsors/thatcube). It genuinely helps — but not
 donating is completely fine, and you get every feature either way.
 
 ## License
 
-Mozz is free software licensed under the **GNU General Public License v3.0**, with an
+Kamioto is free software licensed under the **GNU General Public License v3.0**, with an
 additional permission under section 7 allowing distribution through Apple's App Store
 despite its DRM and code-signing requirements. See [`LICENSE`](LICENSE) for the full
 terms.
 
-Mozz is not affiliated with or endorsed by Plex, Jellyfin, Navidrome,
+Kamioto is not affiliated with or endorsed by Plex, Jellyfin, Navidrome,
 Subsonic/OpenSubsonic, MusicBrainz, ListenBrainz, or LRCLIB. All trademarks belong to
 their respective owners.
 
