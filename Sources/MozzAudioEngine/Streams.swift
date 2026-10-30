@@ -132,7 +132,7 @@ private final class HTTPStreamDiskCache: @unchecked Sendable {
         for url in urls where url.lastPathComponent.hasPrefix(prefix) && url.pathExtension == "bin" {
             let suffix = String(url.lastPathComponent.dropFirst(prefix.count).dropLast(4))
             guard let start = Int64(suffix), offset >= start,
-                  let data = try? Data(contentsFrom: url),
+                  let data = try? Data(contentsOf: url),
                   offset < start + Int64(data.count) else { continue }
             try? fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: url.path)
             return (start, data)
