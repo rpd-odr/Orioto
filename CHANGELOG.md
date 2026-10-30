@@ -16,6 +16,9 @@ installation is in [`docs/INSTALL.md`](docs/INSTALL.md).
 - Make playback transitions **truly gapless**: the next track opens on a
   background thread while the current one plays, so a slow network probe can no
   longer insert silence at the join.
+- Fix the iOS audio engine build: build only the static library (`.a`) for
+  Apple slices instead of also linking the dynamic library, which failed on iOS
+  device with an undefined `___chkstk_darwin` pulled in by bundled Opus.
 
 ## 0.1.2
 

@@ -56,7 +56,23 @@ MODMAP
 build() {
   local target="$1"
   rustup target add "$target" >/dev/null 2>&1 || true
-  (cd "$AUDIO" && cargo build --release -p mozz_audio_ffi --target "$target" >/dev/null)
+  # Build ONLY the staticlib, overriding the manifest's crate-type list.
+  #
+  # `mozz_audio_ffi` is declared as ["staticlib", "cdylib", "rlib"] because the
+  # desktop C# shell P/Invokes the cdylib (tools/build-audio-cdylib.sh), while
+  # Swift links the staticlib. For Apple slices we only need the `.a`, but a
+  # plain `cargo build` also links the cdylib (`-dynamiclib`) — and on
+  # `aarch64-apple-ios` that link FAILS: bundled libopus pulls in objects that
+  # reference `___chkstk_darwin`, a stack-probe symbol exported by libSystem on
+  # macOS and the iOS *simulator* but NOT on iOS *device* (it lives in
+  # compiler-rt, which Rust's dynamic link does not pull in). The failure is
+  # silent (`>/dev/null` + subshell), so `lipo` later finds no `.a`, and
+  # `xcodebuild -create-xcframework` aborts with exit 70.
+  #
+  # `--crate-type staticlib` tells rustc to emit the `.a` and skip the `.so`,
+  # sidestepping the whole device cdylib link. Verified: produces only the
+  # `.a`, never a `.so`/`.dylib`.
+  (cd "$AUDIO" && cargo rustc --release -p mozz_audio_ffi --target "$target" -- --crate-type staticlib >/dev/null)
   echo "$AUDIO/target/$target/release/$LIB"
 }
 
