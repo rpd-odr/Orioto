@@ -23,6 +23,14 @@ installation is in [`docs/INSTALL.md`](docs/INSTALL.md).
   instead of importing `MozzAudioEngine` in the app, so the shell-import
   interlock (`tools/check-shell-imports.sh`) stays at the upstream surface —
   audio never appears in the app's direct-import list (ADR-0016).
+- Re-record the shell-import baseline (`spec/shell-imports.txt`) to the surface
+  upstream actually ships: their `MozzRelay`/`MozzPairing` (Aug 27) and
+  `MozzAnalysis` (Sep 1-2) imports were never recorded, so `--check` has failed
+  upstream's own `main` since then. This branch adds **zero** imports — its
+  surface is byte-identical to upstream's (137) — but the stale baseline made
+  every Core-and-iOS run red regardless. The recorded numbers are upstream's
+  debt, not growth here; `MozzAudioEngine` stays absent from the list, so an
+  audio import in the shell still fails the build.
 
 ## 0.1.2
 
