@@ -116,6 +116,7 @@ the composed `MozzApp` product.
 | **MozzSubsonic** | `SubsonicBackend` — Subsonic / OpenSubsonic with MD5 token and API-key auth (Navidrome QA'd). |
 | **MozzSync** | Mirrors a backend's catalog into the database, paged and off-main, with stable ids and pruning. |
 | **MozzPlayback** | The near-gapless `AVQueuePlayer` engine, the pure `PlayQueue`, equalizer DSP, Now Playing / remote commands, audio-session handling. |
+| **MozzAudioEngine** | The shared Rust audio engine behind a C ABI (`audio/` + `MozzAudioFFI`): decode via Symphonia incl. Opus, the gapless ring, ReplayGain, EQ, off-thread next-track preloading — plus the Swift stream glue: HTTP/file sources and the local track cache. |
 | **MozzDownloads** | Background `URLSession` downloads, on-disk file store, storage accounting, the download-aware track resolver. |
 | **MozzHistory** | The append-only listening log (plays, skips, partials) behind the taste profile that personalizes recommendations. |
 | **MozzContinuity** | Cross-device "continue here" playback checkpoints. |

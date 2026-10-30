@@ -6,6 +6,17 @@ older releases retain their original CalVer (`YYYY.M.D`) versions.
 Downloads are on the [Releases page](https://github.com/thatcube/Mozz/releases);
 installation is in [`docs/INSTALL.md`](docs/INSTALL.md).
 
+## Unreleased
+
+- Decode **Opus** in the shared Rust audio engine, so `.opus` files play the
+  same way on every platform.
+- Cache streamed tracks locally (precache): up to ten tracks, three by default,
+  chosen in Settings. Only hashed request identities are stored on disk —
+  never URLs or credentials.
+- Make playback transitions **truly gapless**: the next track opens on a
+  background thread while the current one plays, so a slow network probe can no
+  longer insert silence at the join.
+
 ## 0.1.2
 
 - Allow plain HTTP media-server connections on iPhone, iPad, and Android,

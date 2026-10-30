@@ -37,6 +37,16 @@ you. If you'd rather Mozz stay fully offline, there's a switch in Settings to
 turn it off. With it off, recommendations fall back to your library's own genre
 tags: still works, just blunter.
 
+## Local audio cache (streamed tracks)
+
+To make streams start instantly and survive a shaky network, Mozz keeps the most
+recently streamed audio on your device — **up to ten tracks, three by default,
+chosen in Settings**. What's stored is the audio data itself, addressed by a
+one-way hash of the request: **no server address, no account, no URL, and no
+authorization headers are written to disk.** You can turn the cache off or clear
+it from Settings at any time. It lives in the system cache directory, which the
+OS may empty under storage pressure.
+
 ## Scrobbling (if it ever ships)
 
 If Mozz later adds scrobbling to Last.fm or ListenBrainz, that's a separate thing

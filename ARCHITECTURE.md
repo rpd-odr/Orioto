@@ -75,7 +75,11 @@ having the portability CI rather than reasoning about it.
 route changes, interruptions and the now-playing centre for free. Everywhere else that is
 miniaudio over WASAPI / CoreAudio / ALSA-PulseAudio-PipeWire, with the gapless behaviour
 built by hand (`clients/desktop/Audio/`). Two engines, each idiomatic, is cheaper than one
-lowest-common-denominator engine.
+lowest-common-denominator engine. *(Superseded by
+[ADR-0015](docs/adr/ADR-0015-one-audio-engine-in-rust.md): decode, the gapless ring,
+ReplayGain and EQ now live in one Rust engine (`audio/`) behind a C ABI; only the sink —
+handing finished samples to the OS — stays per-platform. The argument above is kept as
+the record of why that changed.)*
 
 **Everything else should be shared, and is.** Protocol quirks are where the real work lives
 — Plex's PIN flow, Jellyfin's Quick Connect, Subsonic's MD5 token signing, three different
