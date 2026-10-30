@@ -1,5 +1,3 @@
-<p align="center"><img src="https://raw.githubusercontent.com/thatcube/brando/main/logos/mozz.svg" alt="Kamioto logo" width="128" /></p>
-
 <h1 align="center">Kamioto</h1>
 
 <p align="center">One app for your music, wherever it lives.<br />
