@@ -19,6 +19,7 @@ path = "src/lib.rs"
 [dependencies]
 cpal = "0.18.2"
 symphonia = { version = "0.6.1", features = ["mp3", "aac", "isomp4", "flac", "alac", "vorbis", "wav"] }
+symphonia-adapter-libopus = { version = "0.3.0", features = ["bundled"] }
 
 [profile.release]
 # Stripped here rather than by each platform's packager. Android's strip step

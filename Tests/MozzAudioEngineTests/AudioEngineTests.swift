@@ -73,6 +73,19 @@ final class AudioEngineTests: XCTestCase {
         XCTFail("timed out waiting for: \(description)", file: file, line: line)
     }
 
+    func testHTTPStreamCacheCanBeClearedAndConfigured() {
+        HTTPStreamCache.configure(enabled: true, maximumTracks: 3)
+        HTTPStreamCache.clear()
+        XCTAssertEqual(HTTPStreamCache.cachedTrackCount, 0)
+
+        HTTPStreamCache.configure(enabled: false, maximumTracks: 1)
+        XCTAssertEqual(HTTPStreamCache.cachedTrackCount, 0)
+
+        // Restore the app's default for other tests and the test runner.
+        HTTPStreamCache.configure(enabled: true, maximumTracks: 3)
+        HTTPStreamCache.clear()
+    }
+
     func testAnEngineStartsIdle() throws {
         let engine = try XCTUnwrap(AudioEngine(sampleRate: 8_000, channels: 1, bufferFrames: 8192))
         XCTAssertEqual(engine.state, .idle)

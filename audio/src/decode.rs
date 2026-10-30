@@ -26,6 +26,7 @@
 use std::io::{Read, Seek};
 
 use symphonia::core::codecs::audio::{AudioDecoder as SymphoniaAudioDecoder, AudioDecoderOptions};
+use symphonia::core::codecs::registry::CodecRegistry;
 use symphonia::core::codecs::CodecParameters;
 use symphonia::core::errors::Error as SymphoniaError;
 use symphonia::core::formats::probe::Hint;
@@ -33,6 +34,7 @@ use symphonia::core::formats::{FormatOptions, FormatReader, SeekMode, SeekTo};
 use symphonia::core::io::{MediaSource, MediaSourceStream};
 use symphonia::core::meta::MetadataOptions;
 use symphonia::core::units::{Time, TimeBase, Timestamp};
+use symphonia_adapter_libopus::OpusDecoder;
 
 /// What went wrong, in terms a caller can act on.
 ///
@@ -134,7 +136,13 @@ impl AudioDecoder {
         let mut decoder_options = AudioDecoderOptions::default();
         decoder_options.gapless = true;
 
-        let decoder = symphonia::default::get_codecs()
+        // Symphonia 0.6 leaves Opus to an adapter. Register it alongside the
+        // feature-selected codecs so Opus uses the same shared decode path.
+        let mut codecs = CodecRegistry::new();
+        symphonia::default::register_enabled_codecs(&mut codecs);
+        codecs.register_audio_decoder::<OpusDecoder>();
+
+        let decoder = codecs
             .make_audio_decoder(&params, &decoder_options)
             .map_err(|e| classify(e, "creating decoder"))?;
 

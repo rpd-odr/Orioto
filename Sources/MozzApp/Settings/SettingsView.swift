@@ -2,6 +2,7 @@ import SwiftUI
 import MozzAnalysis
 import MozzCore
 import MozzSync
+import MozzAudioEngine
 
 /// Server info, capability report, sync control, benchmarks entry, and sign-out.
 struct SettingsView: View {
@@ -9,6 +10,9 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     /// Persisted across launches; mirrors `PlaybackEngine.normalizationEnabled`.
     @AppStorage("mozz.normalizationEnabled") private var normalizationEnabled = true
+    @AppStorage("audioTrackCacheEnabled") private var trackCacheEnabled = true
+    @AppStorage("audioTrackCacheMaximumTracks") private var trackCacheMaximumTracks = 3
+    @State private var cachedTrackCount = 0
     /// Open metadata enrichment on/off (default on). Read live by
     /// `AppEnvironment.enrichment`, so no wiring is needed beyond this store.
     @AppStorage("mozz.enrichmentEnabled") private var enrichmentEnabled = true
@@ -77,6 +81,33 @@ struct SettingsView: View {
                         } label: {
                             Label("Equalizer", mozz: "waveform")
                         }
+                    }
+
+                    Section("Local Cache") {
+                        Toggle(isOn: $trackCacheEnabled) {
+                            Label("Cache Streamed Tracks", mozz: "internaldrive")
+                        }
+                        .onChange(of: trackCacheEnabled) { _, enabled in
+                            HTTPStreamCache.configure(enabled: enabled, maximumTracks: trackCacheMaximumTracks)
+                            cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                        }
+                        Picker("Tracks to Keep", selection: $trackCacheMaximumTracks) {
+                            ForEach(1...10, id: \.self) { count in
+                                Text("\(count)").tag(count)
+                            }
+                        }
+                        .disabled(!trackCacheEnabled)
+                        .onChange(of: trackCacheMaximumTracks) { _, count in
+                            HTTPStreamCache.configure(enabled: trackCacheEnabled, maximumTracks: count)
+                            cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                        }
+                        Text("\(cachedTrackCount) cached tracks")
+                            .font(.caption).foregroundStyle(.secondary)
+                        Button("Clear Local Cache", role: .destructive) {
+                            HTTPStreamCache.clear()
+                            cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                        }
+                        .disabled(cachedTrackCount == 0)
                     }
 
                     Section {
@@ -218,7 +249,11 @@ struct SettingsView: View {
                     Button("Done") { dismiss() }
                 }
             }
-            .onAppear { env.playback.normalizationEnabled = normalizationEnabled }
+            .onAppear {
+                env.playback.normalizationEnabled = normalizationEnabled
+                HTTPStreamCache.configure(enabled: trackCacheEnabled, maximumTracks: trackCacheMaximumTracks)
+                cachedTrackCount = HTTPStreamCache.cachedTrackCount
+            }
             .onChange(of: normalizationEnabled) { _, enabled in
                 env.setNormalizationEnabled(enabled)
             }
