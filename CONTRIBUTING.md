@@ -115,7 +115,7 @@ the composed `MozzApp` product.
 | **MozzJellyfin** | `JellyfinBackend` — Quick Connect / password auth, DTOs, mapper. |
 | **MozzSubsonic** | `SubsonicBackend` — Subsonic / OpenSubsonic with MD5 token and API-key auth (Navidrome QA'd). |
 | **MozzSync** | Mirrors a backend's catalog into the database, paged and off-main, with stable ids and pruning. |
-| **MozzPlayback** | The near-gapless `AVQueuePlayer` engine, the pure `PlayQueue`, equalizer DSP, Now Playing / remote commands, audio-session handling. |
+| **MozzPlayback** | The near-gapless `AVQueuePlayer` engine, the pure `PlayQueue`, equalizer DSP, Now Playing / remote commands, audio-session handling. Also `TrackCacheControl` — the shell's one legal doorway to the engine's local track cache; `MozzApp` must reach it here because importing `MozzAudioEngine` in the shell fails `tools/check-shell-imports.sh` (ADR-0016). |
 | **MozzAudioEngine** | The shared Rust audio engine behind a C ABI (`audio/` + `MozzAudioFFI`): decode via Symphonia incl. Opus, the gapless ring, ReplayGain, EQ, off-thread next-track preloading — plus the Swift stream glue: HTTP/file sources and the local track cache. |
 | **MozzDownloads** | Background `URLSession` downloads, on-disk file store, storage accounting, the download-aware track resolver. |
 | **MozzHistory** | The append-only listening log (plays, skips, partials) behind the taste profile that personalizes recommendations. |
