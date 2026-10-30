@@ -1,71 +1,115 @@
-# Kamioto Brand Foundation
+# Kami Brand Foundation
 
-## Brand
+## Brand architecture
 
-**Name:** Kamioto  
-**Wordmark:** KAMIOTO  
-**Tagline:** Your music. Everywhere.  
-**Category:** Personal music player for iPhone, iPad, and connected music libraries.
+**Family:** Kami  
+**First product:** Kamioto — music player and audio library  
+**Possible future product:** Kamiei — video player and video library
 
-Kamioto is a modern music player built around the idea that a listener's music should feel at home wherever it lives. The identity combines quiet Japanese-inspired restraint with the warmth and movement of sound. It should feel considered, expressive, and trustworthy—not ornamental, loud, or tied to a short-lived trend.
+Kami is the shared identity system, not necessarily a customer-facing app name. Kamioto and any future Kamiei product should feel like members of one family while remaining immediately distinguishable in an app grid.
 
-The name is a coined brand name inspired by *oto* (音, sound). Do not present “Kamioto” as a literal Japanese dictionary word or make unsupported cultural claims.
+The family resemblance must come from a shared visual grammar—material, geometry, typography, colour logic, lighting, and motion—not from reusing one identical app icon with different labels.
+
+Do not design Kamiei's product experience now. Its possible existence is a compatibility constraint for Kamioto's identity work.
+
+## Brand idea
+
+**Core idea:** form created by folding; movement created by unfolding.
+
+The identity should feel warm, tactile, quiet, contemporary, and expressive. Paper is the material inspiration and origami is the underlying design principle, but the brand must not rely on literal origami objects or obvious Japanese clichés.
+
+The visual language should communicate transformation: a flat surface becomes volume, a fold becomes a path, and a path becomes movement. This can connect music and video without depicting either medium literally.
+
+The name Kamioto is a coined brand name inspired by *oto* (音, sound). Do not present “Kamioto” as a literal Japanese dictionary word or make unsupported cultural claims. Do not invent a linguistic meaning for “Kamiei”.
 
 ## Brand principles
 
-1. **Harmony** — balanced layouts, measured contrast, and calm visual rhythm.
-2. **Flow** — visual references to sound and continuity, never distracting waveform decoration.
-3. **Clarity** — legible typography, clear hierarchy, and controls that remain obvious.
-4. **Depth** — a dark, immersive listening surface balanced by warm light surfaces.
-5. **Freedom** — the listener's music and chosen services remain central.
+1. **Warmth** — tactile paper, soft light, restrained earthy colour, and a welcoming tone.
+2. **Transformation** — simple surfaces become expressive forms through folds and continuous movement.
+3. **Flow** — continuity and rhythm without generic waveform decoration.
+4. **Clarity** — legible typography, clear hierarchy, and controls that remain obvious.
+5. **Freedom** — the user's own media and chosen services remain central.
 
-## Logo direction
+## Shared visual grammar
 
-The primary concept is a circular sunrise over layered sound waves:
-- a warm orange sun;
-- deep navy wave lines;
-- a simple, balanced circular silhouette;
-- a separate wordmark set in uppercase with generous tracking.
+### Form
 
-The mark must remain recognizable without the wordmark, at small app-icon sizes, and in monochrome. Avoid literal torii gates, cherry blossoms, kanji used as decoration, headphones, musical notes, and generic equalizer bars.
+Explore three related directions:
+- **The Fold:** a single sheet transformed by one precise, distinctive fold. Geometric, compact, and legible at small sizes.
+- **Unfold:** a continuous paper ribbon or strip that changes direction in one fluid gesture. Organic, dynamic, and expressive.
+- **Fold to Unfold:** a hybrid in which a crisp fold transitions into a flowing line. This is the leading candidate for a family-level symbol because it can express both structure and motion.
 
-Required logo variants:
-- primary horizontal lockup;
-- standalone symbol;
-- light-background and dark-background versions;
-- one-colour version;
-- small-size simplified symbol.
+These are exploration routes, not approved final artwork. Avoid shapes that accidentally read as birds, cranes, boats, generic infinity symbols, or stock abstract ribbons. Do not force a K-shaped monogram.
 
-The generated concept board is exploratory direction, not production artwork. Rebuild final assets as clean vector artwork and verify optical alignment and small-size legibility before shipping.
+### Family relationship
 
-## Colour palette
+Kamioto and a possible Kamiei should share:
+- the same typographic family and wordmark logic;
+- the same paper-inspired material language and soft shadow treatment;
+- the same core neutrals and colour relationships;
+- related geometry and line weight;
+- consistent icon construction, corner logic, and motion principles.
 
-| Token | Hex | Role |
+They may have distinct accent colours and distinct symbols. The distinction should be semantic and subtle, not a completely unrelated visual identity.
+
+For Kamioto, sound may inform rhythm, continuity, and flowing line work. A future Kamiei could use framing, planes, and sequences. Do not lock either product to literal media pictograms.
+
+## Colour direction
+
+The previous palette is a starting point, not a final specification. Move away from a bright, saturated orange-led identity toward a warmer paper-based range:
+
+| Token | Direction | Role |
 |---|---|---|
-| Sunset Orange | `#FF6B3D` | Primary accent, active controls, highlights |
-| Warm Sand | `#F5E9DA` | Warm light surfaces |
-| Mist Gray | `#E6E8EC` | Neutral light surfaces and separators |
-| Deep Navy | `#0F172A` | Primary dark surface and text |
-| Ocean Slate | `#334155` | Secondary dark surfaces and muted text |
-| Sage Green | `#4BA3A1` | Secondary accent, success and calm states |
+| Washi Cream | warm ivory | primary light surface |
+| Origami Sand | muted beige | secondary surface and paper layers |
+| Terracotta | earthy red-orange | primary expressive accent |
+| Burnt Orange | restrained warm orange | highlights and active states |
+| Warm Charcoal | softened near-black | text and dark surfaces |
+| Deep Ink | deep blue-charcoal | immersive dark surface |
+| Paper White | neutral white | contrast and elevated surfaces |
 
-Use Sunset Orange sparingly for interaction and emphasis. Do not use the full palette at once. Maintain accessible contrast for text and controls; validate actual foreground/background pairs before implementation. Semantic status colours must remain distinguishable from brand decoration.
+Exact production values must be chosen after testing real UI contrast in light and dark appearances. Avoid making every screen orange or beige. The palette must support a future family member without requiring a redesign.
 
 ## Typography
 
-Preferred direction:
-- **Display / wordmark:** a clean geometric sans with open counters and restrained tracking. Satoshi is a visual reference, subject to confirming its licence and bundling requirements.
-- **Interface and body:** Inter or the platform system font. Prefer the native iOS system font for controls and dynamic type unless a custom face demonstrably improves the experience.
+Use a contemporary, highly legible sans-serif with a warm, human character. Wordmarks may use more generous tracking; interface typography should remain native-feeling and accessible.
 
-Do not bake the wordmark into UI text as an image where accessible text is appropriate.
+Satoshi may be explored as a visual reference, subject to confirming its licence and bundling requirements. Inter or the iOS system font are practical interface candidates. Do not use pseudo-Japanese display fonts or decorative kanji.
+
+## Material, lighting, and motion
+
+- Paper texture should be subtle and tactile, never noisy or rustic.
+- Prefer real-looking folds, layered edges, embossing, and soft cast shadows over glossy gradients.
+- The visual system must also work as flat vector artwork and in monochrome; texture cannot carry the identity by itself.
+- Motion should feel like folding, unfolding, or a surface gently changing state. Keep it brief, purposeful, and energy efficient.
+- Avoid making every screen look like a sheet of stationery. The player and media artwork remain the focus.
+
+## Logo and icon requirements
+
+Explore the three form directions above before choosing a final mark. The final mark must:
+- be abstract and ownable without the wordmark;
+- remain legible at small app-icon sizes;
+- work in monochrome, on light and dark backgrounds, and without texture;
+- feel related to a possible future Kami family product;
+- avoid literal cranes, birds, torii gates, cherry blossoms, decorative kanji, headphones, musical notes, and generic equalizer bars.
+
+Required final assets, once a direction is approved:
+- primary wordmark and horizontal lockup;
+- standalone symbol;
+- light, dark, and one-colour variants;
+- app icon master and required platform exports;
+- simplified small-size variant;
+- documented clear space and minimum size.
+
+Moodboards and generated images are exploratory references only. Rebuild approved artwork as clean vector assets and verify optical alignment and small-size legibility before shipping.
 
 ## Product expression
 
-- Listening screens may use Deep Navy for an immersive, low-glare presentation.
+- Listening screens may use a deep, warm dark surface for an immersive experience.
 - Library and settings screens prioritize scanability and native iOS conventions.
-- Artwork remains the visual hero; brand elements should frame it rather than compete with it.
-- Motion should be subtle and tied to playback state. Avoid decorative animation that consumes attention or battery.
-- The interface must support light and dark appearances and Dynamic Type.
+- Album artwork remains the visual hero; brand elements frame it rather than compete with it.
+- Use paper-inspired surfaces selectively in onboarding, empty states, transitions, and brand moments.
+- Support light and dark appearances, Dynamic Type, accessibility contrast, and localisation.
 
 ## Naming and technical boundaries
 
@@ -74,18 +118,22 @@ The customer-facing product name is **Kamioto**. Replace customer-facing “Orio
 **Do not rename internal technical identifiers as part of this rebrand.** Preserve:
 - Swift modules and package products such as `MozzKit`, `MozzCore`, `MozzPlayback`, and the other `Mozz*` modules;
 - Rust crate names and FFI symbols;
-- source directories, target names, and Objective-C runtime names unless a separate technical migration is explicitly approved;
-- existing Bundle ID, App Group identifiers, database names, persisted keys, and on-disk paths.
+- source directories, Xcode target names, and Objective-C runtime names unless a separate technical migration is explicitly approved;
+- Bundle ID `com.thatcube.Mozz`, App Group `group.com.thatcube.Mozz`, database names, persisted keys, and on-disk paths;
+- deep-link scheme `mozz://`, Bonjour service `_mozz._tcp`, Siri/Handoff identifiers, and existing service contracts.
 
-Do not perform a blind global search-and-replace. Customer-facing strings must be distinguished from identifiers, compatibility contracts, and persisted data.
+Do not perform a blind global search-and-replace. Customer-facing strings must be distinguished from identifiers, compatibility contracts, persisted data, and upstream attribution. Keep upstream Mozz attribution and source links where legally or technically appropriate; do not present upstream distribution assets as Kamioto branding.
 
 ## Acceptance checklist
 
-- [ ] Final vector logo and app icon supplied in light and dark variants.
+- [ ] Family-level visual grammar documented and usable by a future Kamiei without designing Kamiei prematurely.
+- [ ] The Fold, Unfold, and Fold-to-Unfold explored side by side.
+- [ ] Final vector logo and app icon supplied in light, dark, and monochrome variants.
 - [ ] App icon tested at small sizes and against iOS appearance variants.
 - [ ] Splash / launch screen uses the approved mark and palette.
 - [ ] App display name is Kamioto.
 - [ ] Onboarding, settings, accessibility labels, and user-visible copy use Kamioto consistently.
 - [ ] README, repository description, documentation, and release copy use Kamioto.
-- [ ] No internal `Mozz*` module, crate, FFI, Bundle ID, App Group, or persistence identifier was renamed.
+- [ ] Upstream Mozz attribution and links are preserved where appropriate and clearly distinguished from Kamioto.
+- [ ] No internal `Mozz*` module, crate, FFI, Bundle ID, App Group, deep-link, Bonjour, or persistence identifier was renamed.
 - [ ] Contrast, Dynamic Type, light/dark appearance, and localisation are checked.
