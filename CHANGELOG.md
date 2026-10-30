@@ -19,6 +19,10 @@ installation is in [`docs/INSTALL.md`](docs/INSTALL.md).
 - Fix the iOS audio engine build: build only the static library (`.a`) for
   Apple slices instead of also linking the dynamic library, which failed on iOS
   device with an undefined `___chkstk_darwin` pulled in by bundled Opus.
+- Reach the track cache from Settings through `MozzPlayback.TrackCacheControl`
+  instead of importing `MozzAudioEngine` in the app, so the shell-import
+  interlock (`tools/check-shell-imports.sh`) stays at the upstream surface —
+  audio never appears in the app's direct-import list (ADR-0016).
 
 ## 0.1.2
 

@@ -2,7 +2,6 @@ import SwiftUI
 import MozzAnalysis
 import MozzCore
 import MozzSync
-import MozzAudioEngine
 
 /// Server info, capability report, sync control, benchmarks entry, and sign-out.
 struct SettingsView: View {
@@ -88,8 +87,8 @@ struct SettingsView: View {
                             Label("Cache Streamed Tracks", mozz: "internaldrive")
                         }
                         .onChange(of: trackCacheEnabled) { _, enabled in
-                            HTTPStreamCache.configure(enabled: enabled, maximumTracks: trackCacheMaximumTracks)
-                            cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                            env.configureTrackCache(enabled: enabled, maximumTracks: trackCacheMaximumTracks)
+                            cachedTrackCount = env.cachedTrackCount
                         }
                         Picker("Tracks to Keep", selection: $trackCacheMaximumTracks) {
                             ForEach(1...10, id: \.self) { count in
@@ -98,14 +97,14 @@ struct SettingsView: View {
                         }
                         .disabled(!trackCacheEnabled)
                         .onChange(of: trackCacheMaximumTracks) { _, count in
-                            HTTPStreamCache.configure(enabled: trackCacheEnabled, maximumTracks: count)
-                            cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                            env.configureTrackCache(enabled: trackCacheEnabled, maximumTracks: count)
+                            cachedTrackCount = env.cachedTrackCount
                         }
                         Text("\(cachedTrackCount) cached tracks")
                             .font(.caption).foregroundStyle(.secondary)
                         Button("Clear Local Cache", role: .destructive) {
-                            HTTPStreamCache.clear()
-                            cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                            env.clearTrackCache()
+                            cachedTrackCount = env.cachedTrackCount
                         }
                         .disabled(cachedTrackCount == 0)
                     }
@@ -251,8 +250,8 @@ struct SettingsView: View {
             }
             .onAppear {
                 env.playback.normalizationEnabled = normalizationEnabled
-                HTTPStreamCache.configure(enabled: trackCacheEnabled, maximumTracks: trackCacheMaximumTracks)
-                cachedTrackCount = HTTPStreamCache.cachedTrackCount
+                env.configureTrackCache(enabled: trackCacheEnabled, maximumTracks: trackCacheMaximumTracks)
+                cachedTrackCount = env.cachedTrackCount
             }
             .onChange(of: normalizationEnabled) { _, enabled in
                 env.setNormalizationEnabled(enabled)

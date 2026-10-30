@@ -1085,6 +1085,20 @@ public final class AppEnvironment: ObservableObject {
         }
     }
 
+    /// Local track cache policy (Settings). Reaches the engine through
+    /// `MozzPlayback` rather than importing `MozzAudioEngine` here — the shell
+    /// import interlock rejects that import on purpose (ADR-0016), and this is
+    /// the one doorway the app is allowed to use.
+    public func configureTrackCache(enabled: Bool, maximumTracks: Int) {
+        TrackCacheControl.configure(enabled: enabled, maximumTracks: maximumTracks)
+    }
+
+    public func clearTrackCache() {
+        TrackCacheControl.clear()
+    }
+
+    public var cachedTrackCount: Int { TrackCacheControl.cachedTrackCount }
+
     /// Load the persisted EQ state into the engine at launch, before any track is
     /// restored, so the first item is built with the right processing.
     private func restoreEqualizer() {
