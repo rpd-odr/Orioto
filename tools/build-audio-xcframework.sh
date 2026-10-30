@@ -69,10 +69,13 @@ build() {
   # silent (`>/dev/null` + subshell), so `lipo` later finds no `.a`, and
   # `xcodebuild -create-xcframework` aborts with exit 70.
   #
-  # `--crate-type staticlib` tells rustc to emit the `.a` and skip the `.so`,
-  # sidestepping the whole device cdylib link. Verified: produces only the
-  # `.a`, never a `.so`/`.dylib`.
-  (cd "$AUDIO" && cargo rustc --release -p mozz_audio_ffi --target "$target" -- --crate-type staticlib >/dev/null)
+  # `cargo rustc --crate-type staticlib` (NO `--` separator) replaces the
+  # manifest's crate-type list for this one invocation, so rustc emits only
+  # the `.a` and never runs the `-dynamiclib` link. Do NOT "clean this up" by
+  # adding `--`: `cargo rustc -- --crate-type staticlib` APPENDS the type
+  # instead of replacing it — verified to still build the dylib and still
+  # fail on aarch64-apple-ios.
+  (cd "$AUDIO" && cargo rustc --release -p mozz_audio_ffi --crate-type staticlib --target "$target" >/dev/null)
   echo "$AUDIO/target/$target/release/$LIB"
 }
 
